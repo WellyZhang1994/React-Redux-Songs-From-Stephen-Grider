@@ -4,16 +4,20 @@ import { selectSong } from '../actions';
 
 class SongList extends React.Component{
     renderList(){
-        return(
-            <div className="item" key={this.props.jeffs.name}>
-                <div className="right floated content">
-                    <button className="ui button primary" onClick={this.renderName(this.props.jeffs)}>
-                        select
-                    </button>
+        return this.props.songs.map((song)=>{
+            return(
+                <div className="item" key={song.title}>
+                    <div className="right floated content">
+                        <button className="ui button primary" onClick={() => this.selectSong(song)}>
+                            select
+                        </button>
+                    </div>
+                    <div className="content">
+                        {song.title}
+                    </div>
                 </div>
-                <div className="content"></div>
-            </div>
-        );
+            );
+        })
     }
 
     render(){
@@ -22,20 +26,20 @@ class SongList extends React.Component{
         return <div className="ui divided list">{this.renderList()}</div>;
     }
 
-    renderName(values){
-        console.log(values);
+    selectSong = (song)=>{
+        this.props.selectSong(song);
     }
 }
 
 //change state to props
 const getMyState = (state) =>{
     //console.log(state);
-    return {jeffs: state.jeff};
+    return {songs: state.songs};
 }
 
 //first() put state to props function and also let action to reducer to change the state.
 //second() put props to component.
-export default connect(getMyState ,{  selectSong  })(SongList);
+export default connect(getMyState ,{ selectSong })(SongList);
 
 
 // function connect(){

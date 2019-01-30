@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 
-const jeffReducer = () => {
+const songs = () => {
     return [
-        { name: '楊宗翰', dept: '精算二部-決策支援系統科'},
-        { name: '廖登義', dept: '精算二部-決策支援系統科'},
-        { name: '蘇翠淑', dept: '精算二部-決策支援系統科'},
-        { name: '莊承諺', dept: '精算二部-決策支援系統科'},
+        { title: 'song1', duration: 'song1-duration'},
+        { title: 'song2', duration: 'song2-duration'},
+        { title: 'song3', duration: 'song3-duration'},
+        { title: 'song4', duration: 'song4-duration'},
     ];
 }
 
@@ -18,6 +18,6 @@ const selectedSongReducer = (selectedSong = null, action) => {
 }
 
 export default combineReducers({
-    jeff: jeffReducer,
+    songs: songs,
     selectedSong: selectedSongReducer
 });
